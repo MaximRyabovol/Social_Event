@@ -9,9 +9,16 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.TileProvider;
+import com.google.android.gms.maps.model.UrlTileProvider;
+
+import java.net.URL;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
+    private static final String TITLE_URL = "http://tile0.maps.2gis.com/tiles?x=%d&y=%d&z=%d&v=1";
+    private static final int MIN_ZOOM = 2;
+    private static final int MAX_ZOOM = 18;
     private GoogleMap mMap;
 
     @Override
@@ -38,9 +45,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
+        TileProvider tileProvider = new UrlTileProvider(256, 256){
+            @Override
+            public URL getTileUrl(int i, int i1, int i2) {
+                String s = String.format(TITLE_URL, i, i1, i2);
+
+                try{
+                    return new URL(s);
+                } catch(Exception e){
+                    throw new AssertionError(e);
+                }
+            }
+        };
+
+/*        // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));*/
     }
 }
