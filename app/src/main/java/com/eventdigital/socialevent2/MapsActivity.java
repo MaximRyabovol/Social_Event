@@ -1,66 +1,155 @@
 package com.eventdigital.socialevent2;
 
-import android.support.v4.app.FragmentActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import android.webkit.JavascriptInterface;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.Toast;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.TileProvider;
-import com.google.android.gms.maps.model.UrlTileProvider;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity{
 
-    private static final String TITLE_URL = "http://tile0.maps.2gis.com/tiles?x=%d&y=%d&z=%d&v=1";
-    private static final int MIN_ZOOM = 2;
-    private static final int MAX_ZOOM = 18;
-    private GoogleMap mMap;
+    private WebView map;
+    private static String START_GEO = "25.220317,55.232048,13";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        map = (WebView) findViewById(R.id.mapView);
+        map.setVerticalScrollBarEnabled(false);
+        map.getSettings().setJavaScriptEnabled(true);
+        map.loadUrl("file:///android_asset/map_api.html");
+        map.addJavascriptInterface(new MarkerWebInterface(getApplicationContext()), "android_callback");
+        map.setWebViewClient(new WebViewClient(){
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                String js = "initMap(" + START_GEO + ");";
+
+                if (android.os.Build.VERSION.SDK_INT >= 19) {
+                    map.evaluateJavascript(js, null);
+                } else {
+                    map.loadUrl("javascript: " + js);
+                }
+
+                List<Marker> markers = new ArrayList<>();
+                markers.add(new Marker("70000001006275165", 25.263831, 55.288396));
+                markers.add(new Marker("70000001006186603", 25.260066, 55.285606));
+                markers.add(new Marker("70000001007008967", 25.24457, 55.318308));
+
+                showMarkers(markers);
+            }
+        });
     }
 
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-
-        TileProvider tileProvider = new UrlTileProvider(256, 256){
+    private void showMarkers(final List<Marker> markers) {
+        new Handler().postDelayed(new Runnable() {
             @Override
-            public URL getTileUrl(int i, int i1, int i2) {
-                String s = String.format(TITLE_URL, i, i1, i2);
-
-                try{
-                    return new URL(s);
-                } catch(Exception e){
-                    throw new AssertionError(e);
+            public void run() {
+                if (android.os.Build.VERSION.SDK_INT >= 19) {
+                    map.evaluateJavascript(prepareMarkerMessage(markers), null);
+                } else {
+                    map.loadUrl("javascript: "+prepareMarkerMessage(markers));
                 }
             }
-        };
+        }, 600);
+    }
 
-/*        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));*/
+    private String prepareMarkerMessage(List<Marker> markers) {
+//        return getMarkersArray(markers) + "var lat;var lon;setMarkersAndAvatar(markers, 25.248772, 55.36103, 'https://cdn-new.flamp.us/default-avatar-m_100_100.png');";
+        return getMarkersArray(markers) + "var lat; var lon; setMarkersAndAvatar(markers, null, null, null);";
+    }
+
+    public static StringBuilder getMarkersArray(List<Marker> markers) {
+        final int optionsCount = 3;
+        StringBuilder builder = new StringBuilder("var markers = new Array(" + markers.size() + ");");
+        builder.append("for (var i = 0; i < " + markers.size() + "; i++) {markers[i] = new Array(" + optionsCount + ");} ");
+
+        for (int i = 0; i < markers.size(); i++) {
+            builder.append("markers[" + i + "][0] = " + markers.get(i).getLat() + ";");
+            builder.append("markers[" + i + "][1] = " + markers.get(i).getLon() + ";");
+            String[] ids = markers.get(i).getFilialIDs().substring(0, markers.get(i).getFilialIDs().length() - 1).split(",");
+            builder.append("markers[" + i + "][2] = [");
+            for (int j = 0; j < ids.length; j++) {
+                builder.append("'" + ids[j] + "'");
+                if (j + 1 < ids.length) builder.append(",");
+            }
+            builder.append("];");
+        }
+        return builder;
+    }
+
+    public class Marker {
+        private String filial_id;
+        private double lon;
+        private double lat;
+        private String filialIDs;
+
+        public Marker(String filial_id, double lat, double lon) {
+            this.filial_id = filial_id;
+            this.lon = lon;
+            this.lat = lat;
+            this.filialIDs = filial_id;
+        }
+
+        public String getFilial_id() {
+            return filial_id;
+        }
+
+        public void setFilial_id(String filial_id) {
+            this.filial_id = filial_id;
+        }
+
+        public double getLon() {
+            return lon;
+        }
+
+        public void setLon(double lon) {
+            this.lon = lon;
+        }
+
+        public double getLat() {
+            return lat;
+        }
+
+        public void setLat(double lat) {
+            this.lat = lat;
+        }
+
+        public String getFilialIDs() {
+            return filialIDs;
+        }
+
+        public void setFilialIDs(String filialIDs) {
+            this.filialIDs = filialIDs;
+        }
+    }
+
+    private class MarkerWebInterface {
+        private Context context;
+
+        MarkerWebInterface(Context c) {
+            context = c;
+        }
+
+        @JavascriptInterface
+        public void clickCopyright(final String url) {
+            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+        }
+
+        @JavascriptInterface
+        public void touchMarker(final String filialIds, final String lat, final String lon, final boolean isActive) {
+            Toast.makeText(context, "Filial id is "+filialIds,Toast.LENGTH_LONG).show();
+        }
     }
 }
