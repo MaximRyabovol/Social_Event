@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="little_text_size">10sp</dimen>
+    <dimen name="header_text">24sp</dimen>
+    <dimen name="body_large_text">16sp</dimen>
+    <dimen name="body_small_text">14sp</dimen>
+    <dimen name="caption_text">12sp</dimen>
+    <dimen name="button_text">14sp</dimen>
+
+    <dimen name="large_space">32dp</dimen>
+    <dimen name="middle_space">16dp</dimen>
+    <dimen name="small_space">8dp</dimen>
+    <dimen name="tiny_space">4dp</dimen>
 </resources>

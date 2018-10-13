@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/registration_layout_container"
     android:orientation="vertical"
@@ -9,8 +9,43 @@
 
     <ImageView
         android:id="@+id/registration_title_image"
+        android:layout_width="152dp"
+        android:layout_height="58dp"
+        android:layout_alignStart="@+id/guest_button"
+        android:layout_alignLeft="@id/guest_button"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="-13dp"
+        android:layout_marginLeft="-13dp"
+        android:layout_marginTop="232dp"
+        android:src="@drawable/event_title" />
+
+    <Button
+        android:id="@+id/registration_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="300dp"
+        android:hint="@string/registration_button"
+        android:backgroundTint="@color/app_red"
+        android:textColor="@color/gray"/>
 
-</LinearLayout>
+    <Button
+        android:id="@+id/guest_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="350dp"
+        android:hint="@string/guest_button" />
+
+    <TextView
+        android:id="@+id/registration_already"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="122dp"
+        android:text="@string/registration_already" />
+
+</RelativeLayout>
