@@ -30,6 +30,21 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps">
+        </activity>
+
+        <activity
+            android:name=".EventsActivity"
+            android:label="@string/title_activity_maps">
+        </activity>
+
+        <activity
+            android:name=".EventDetail"
+            android:label="@string/title_activity_maps">
+        </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_maps">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

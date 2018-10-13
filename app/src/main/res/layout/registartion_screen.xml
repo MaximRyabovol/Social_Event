@@ -1,53 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/registration_layout_container"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+    android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/registration_title_image"
-        android:layout_width="152dp"
-        android:layout_height="58dp"
-        android:layout_alignStart="@+id/guest_button"
-        android:layout_alignLeft="@id/guest_button"
-        android:layout_alignParentTop="true"
-        android:layout_gravity="center"
-        android:layout_marginStart="-13dp"
-        android:layout_marginLeft="-13dp"
-        android:layout_marginTop="232dp"
-        android:src="@drawable/event_title" />
+        android:layout_width="195dp"
+        android:layout_height="91dp"
+        android:layout_marginTop="160dp"
+        android:src="@drawable/event_title"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="80dp"/>
 
     <Button
         android:id="@+id/registration_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_marginTop="300dp"
-        android:hint="@string/registration_button"
+        android:layout_width="190dp"
+        android:layout_height="70dp"
         android:backgroundTint="@color/app_red"
-        android:textColor="@color/gray"/>
+        android:hint="@string/registration_button"
+        android:textColor="@color/white"
+        android:textSize="@dimen/body_large_text"
+        app:layout_constraintTop_toBottomOf="@id/registration_title_image"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <Button
         android:id="@+id/guest_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="350dp"
-        android:hint="@string/guest_button" />
+        android:layout_width="170dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
+        android:hint="@string/guest_button"
+        android:textColor="@color/white"
+        android:textSize="@dimen/body_large_text"
+        app:layout_constraintTop_toBottomOf="@+id/registration_button"
+        android:layout_marginLeft="95dp"
+        android:layout_marginStart="93dp"
+        app:layout_constraintStart_toStartOf="parent"/>
 
-    <TextView
-        android:id="@+id/registration_already"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="122dp"
-        android:text="@string/registration_already" />
-
-
-
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

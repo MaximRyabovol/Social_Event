@@ -1,5 +1,7 @@
 package com.eventdigital.socialevent2;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +11,7 @@ import android.widget.Toast;
 
 public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdapter.EventViewHolder> {
     private String[] data;
+
 
     public EventRecyclerAdapter(String[] data) {
         this.data = data;
@@ -27,7 +30,7 @@ public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdap
         eventViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(eventViewHolder.itemView.getContext(), value, Toast.LENGTH_LONG).show();
+                eventViewHolder.itemView.getContext().startActivity(new Intent(eventViewHolder.itemView.getContext(), EventDetail.class));
             }
         });
     }

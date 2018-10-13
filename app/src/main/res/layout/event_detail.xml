@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/Theme.AppCompat.NoActionBar">
+    android:theme="@style/Theme.AppCompat.NoActionBar"
+    android:background="@color/white">
 
 
 
@@ -39,18 +40,18 @@
         android:src="@drawable/arrow_left"
         app:layout_constraintDimensionRatio="h,1:1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/event_detail_image" />
+        app:layout_constraintTop_toBottomOf="@id/event_detail_image"/>
 
     <TextView
         android:id="@+id/event_detail_image_previous"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="@dimen/middle_space"
         android:text="@string/previous"
         android:textAppearance="@style/TextAppearance.BodySmall.Gray"
-        app:layout_constraintEnd_toEndOf="@+id/event_detail_left_arrow"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/event_detail_left_arrow"
         app:layout_constraintTop_toBottomOf="@id/event_detail_image" />
 
@@ -80,36 +81,36 @@
         android:id="@+id/event_detail_subtitle_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/middle_space"
+        android:layout_marginLeft="@dimen/little_text_size"
         android:layout_marginTop="@dimen/middle_space"
         android:text="@string/event_detail_subtitle_date"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/event_detail_left_arrow"
+        app:layout_constraintStart_toStartOf="parent"
         android:textAppearance="@style/TextAppearance.BodyLarge.Red"/>
 
     <ImageView
-        android:layout_width="19dp"
-        android:layout_height="17dp"
+        android:id="@+id/share_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="284dp"
         android:src="@drawable/share_icon"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/event_detail_right_arrow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.966"
         app:layout_constraintStart_toStartOf="parent" />
 
 
     <ImageView
-        android:layout_width="19dp"
-        android:layout_height="17dp"
-        android:layout_marginEnd="52dp"
-        android:layout_marginRight="52dp"
-        android:layout_marginBottom="284dp"
+        android:id="@+id/like_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginRight="@dimen/small_space"
+        android:layout_marginBottom="288dp"
         android:src="@drawable/like_icon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@drawable/share_icon" />
+        app:layout_constraintTop_toBottomOf="@id/event_detail_right_arrow"
+        app:layout_constraintEnd_toStartOf="@id/share_icon" />
 
     <TextView
         android:id="@+id/event_detail_header"
@@ -140,7 +141,7 @@
         android:src="@drawable/check_box_icon"
         app:layout_constraintTop_toBottomOf="@id/event_detail_text_content"
         android:layout_marginLeft="@dimen/middle_space"
-        android:layout_marginTop="@dimen/small_space"
+        android:layout_marginTop="@dimen/large_space"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
@@ -149,7 +150,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:layout_marginLeft="44dp"
-        android:layout_marginTop="@dimen/small_space"
+        android:layout_marginTop="@dimen/large_space"
         android:text="@string/check_box1"
         android:textAppearance="@style/TextAppearance.BodyLarge.Gray"
         app:layout_constraintStart_toStartOf="parent"
@@ -201,13 +202,14 @@
 
     <Button
         android:id="@+id/buy_ticket_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="124dp"
-        android:layout_marginLeft="124dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="170dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="@dimen/large_space"
         android:backgroundTint="@color/app_red"
         android:hint="@string/buy_ticket_button"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/checkbox3" />
 

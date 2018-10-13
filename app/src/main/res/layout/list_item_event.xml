@@ -5,11 +5,13 @@
     android:layout_height="300dp"
     android:layout_marginTop="@dimen/middle_space"
     app:cardCornerRadius="@dimen/middle_space"
-    app:cardElevation="@dimen/tiny_space">
+    app:cardElevation="@dimen/tiny_space"
+    android:background="@color/white">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#FAFAFA">
 
         <ImageView
             android:id="@+id/event_image"
@@ -18,7 +20,8 @@
             android:src="@drawable/little_big"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <TextView
             android:id="@+id/title_event"

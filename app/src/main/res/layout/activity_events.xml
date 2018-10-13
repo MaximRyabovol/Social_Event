@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white">
 
     <Button
         android:id="@+id/bt_move_map"
@@ -13,7 +14,7 @@
         android:layout_marginTop="@dimen/small_space"
         android:layout_marginEnd="@dimen/middle_space"
         android:backgroundTint="@color/gray"
-        android:text="@string/next"
+        android:text="Перейти к карте"
         android:textAllCaps="true"
         android:textAppearance="@style/TextAppearance.BodySmall.White"
         android:textStyle="bold"

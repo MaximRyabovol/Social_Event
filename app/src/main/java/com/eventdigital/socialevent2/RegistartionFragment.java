@@ -1,4 +1,4 @@
-package com.eventdigital.socialevent2.fragments;
+package com.eventdigital.socialevent2;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
