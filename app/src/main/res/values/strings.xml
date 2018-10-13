@@ -5,4 +5,15 @@
     <string name="registration_button">Зарегестрироваться</string>
     <string name="guest_button">Войти как гость</string>
     <string name="registration_already">Уже зарегестрированны?</string>
+    <string name="next">Дальше</string>
+    <string name="previous">Назад</string>
+    <string name="event_detail_subtitle_date">13 октября</string>
+    <string name="event_detail_header">Концерт мировой рейв-группы LITTLE BIG</string>
+    <string name="event_detail_text_content">LITTLE BIG - русская рейв-группа,
+        разрывающая танцполы по всему миру. На счету Little Big два альбома, 13 видео и
+        больше 33 млн просмотров на YouTube за три года деятельности.</string>
+    <string name="check_box1">Вход с восемнадцати лет</string>
+    <string name="check_box2">Алкоголь в продаже</string>
+    <string name="check_box3">Можно сфотографироваться</string>
+    <string name="buy_ticket_button">Купить билет</string>
 </resources>

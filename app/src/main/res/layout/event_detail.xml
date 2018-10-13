@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/Theme.AppCompat.NoActionBar">
+
+
+
+    <ImageView
+        android:id="@+id/event_detail_image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/little_big_single"
+        app:layout_constraintDimensionRatio="16:9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/show_event_map"
+        android:layout_width="43dp"
+        android:layout_height="42dp"
+        android:layout_marginLeft="@dimen/middle_space"
+        android:src="@drawable/icon_markers_4"
+        app:layout_constraintDimensionRatio="h,1:1"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+    <ImageView
+        android:id="@+id/event_detail_left_arrow"
+        android:layout_width="30dp"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/middle_space"
+        android:layout_marginTop="@dimen/middle_space"
+        android:src="@drawable/arrow_left"
+        app:layout_constraintDimensionRatio="h,1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/event_detail_image" />
+
+    <TextView
+        android:id="@+id/event_detail_image_previous"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/previous"
+        android:textAppearance="@style/TextAppearance.BodySmall.Gray"
+        app:layout_constraintEnd_toEndOf="@+id/event_detail_left_arrow"
+        app:layout_constraintStart_toEndOf="@+id/event_detail_left_arrow"
+        app:layout_constraintTop_toBottomOf="@id/event_detail_image" />
+
+    <ImageView
+        android:id="@+id/event_detail_right_arrow"
+        android:layout_width="30dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/middle_space"
+        android:layout_marginRight="@dimen/middle_space"
+        android:src="@drawable/arrow_right"
+        app:layout_constraintDimensionRatio="h,1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/event_detail_image" />
+
+    <TextView
+        android:id="@+id/event_detail_image_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/middle_space"
+        android:text="@string/next"
+        app:layout_constraintTop_toBottomOf="@id/event_detail_image"
+        android:layout_marginTop="@dimen/middle_space"
+        app:layout_constraintEnd_toStartOf="@+id/event_detail_right_arrow"
+        android:textAppearance="@style/TextAppearance.BodySmall.Gray"/>
+
+    <TextView
+        android:id="@+id/event_detail_subtitle_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/middle_space"
+        android:layout_marginTop="@dimen/middle_space"
+        android:text="@string/event_detail_subtitle_date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/event_detail_left_arrow"
+        android:textAppearance="@style/TextAppearance.BodyLarge.Red"/>
+
+    <ImageView
+        android:layout_width="19dp"
+        android:layout_height="17dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="284dp"
+        android:src="@drawable/share_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.966"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <ImageView
+        android:layout_width="19dp"
+        android:layout_height="17dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginRight="52dp"
+        android:layout_marginBottom="284dp"
+        android:src="@drawable/like_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@drawable/share_icon" />
+
+    <TextView
+        android:id="@+id/event_detail_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/event_detail_header"
+        android:textAppearance="@style/TextAppearance.BodyLarge"
+        app:layout_constraintTop_toBottomOf="@id/event_detail_subtitle_date"
+        android:layout_marginLeft="@dimen/middle_space"
+        android:layout_marginTop="@dimen/small_space"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/event_detail_text_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/event_detail_text_content"
+        android:textAppearance="@style/TextAppearance.BodyLarge.Gray"
+        app:layout_constraintTop_toBottomOf="@id/event_detail_header"
+        android:layout_marginLeft="@dimen/middle_space"
+        android:layout_marginTop="@dimen/small_space"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/checkbox1"
+        android:layout_width="19dp"
+        android:layout_height="17dp"
+        android:src="@drawable/check_box_icon"
+        app:layout_constraintTop_toBottomOf="@id/event_detail_text_content"
+        android:layout_marginLeft="@dimen/middle_space"
+        android:layout_marginTop="@dimen/small_space"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/event_detail_text_checkbox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="@dimen/small_space"
+        android:text="@string/check_box1"
+        android:textAppearance="@style/TextAppearance.BodyLarge.Gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/event_detail_text_content" />
+
+    <ImageView
+        android:id="@+id/checkbox2"
+        android:layout_width="19dp"
+        android:layout_height="17dp"
+        android:src="@drawable/check_box_icon"
+        app:layout_constraintTop_toBottomOf="@id/checkbox1"
+        android:layout_marginLeft="@dimen/middle_space"
+        android:layout_marginTop="@dimen/small_space"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/event_detail_text_checkbox2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="@dimen/small_space"
+        android:text="@string/check_box2"
+        android:textAppearance="@style/TextAppearance.BodyLarge.Gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkbox1" />
+
+    <ImageView
+        android:id="@+id/checkbox3"
+        android:layout_width="19dp"
+        android:layout_height="17dp"
+        android:src="@drawable/check_box_icon"
+        app:layout_constraintTop_toBottomOf="@id/checkbox2"
+        android:layout_marginLeft="@dimen/middle_space"
+        android:layout_marginTop="@dimen/small_space"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/event_detail_text_checkbox3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="@dimen/small_space"
+        android:text="@string/check_box3"
+        android:textAppearance="@style/TextAppearance.BodyLarge.Gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkbox2"/>
+
+    <Button
+        android:id="@+id/buy_ticket_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="124dp"
+        android:layout_marginLeft="124dp"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="@color/app_red"
+        android:hint="@string/buy_ticket_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkbox3" />
+
+
+</android.support.constraint.ConstraintLayout>
