@@ -16,4 +16,8 @@
     <string name="check_box2">Алкоголь в продаже</string>
     <string name="check_box3">Можно сфотографироваться</string>
     <string name="buy_ticket_button">Купить билет</string>
+    <string name="move_map">Перейти к карте</string>
+    <string name="little_big_title">Концерт мировой рейв-группы LITTLE BIG</string>
+    <string name="grand_arena">GRAND ARENA</string>
+    <string name="count_little_big">830 участников</string>
 </resources>
